@@ -94,4 +94,5 @@ Icon
 node_modules/
 bower_components/
 lib/
+!dist/lib
 .sass-cache
