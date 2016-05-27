@@ -1,0 +1,86 @@
+/********* BASE STYLES *************/
+body {
+  font-family: $font__family--sans;
+  background-color: #fff;
+}
+
+.container-fluid {
+  //padding-top: 20px;
+  //padding-right: 35px;
+  //padding-left: 35px;
+
+  //necessary for animation transitions
+  //position:absolute;
+  //margin-right: auto;
+  //margin-left: auto;
+  //width:100%;
+}
+
+//ANIMATIONS
+.view.ng-enter, .view.ng-leave {
+  transition:0.5s ease-in-out all;
+}
+
+//Start
+.view.ng-enter {
+  opacity: 0;
+}
+
+//Finish
+.view.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+
+.view.ng-leave {
+  opacity: 1;
+}
+
+.view.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+/* Always provide a class along with the tag declerations
+    for styles makes reuse much easier, and your code
+    more modular */
+h1, .heading {
+  font-size: 25px;
+  font-family: $font__family--slab;
+}
+
+h2, .heading-2 {
+  font-size: 20px;
+  font-family: $font__family--slab;
+}
+
+h3, .heading-3 {
+  font-size: 18px;
+  font-family: $font__family--slab;
+}
+
+.heading-3--sans-serif {
+  font-size: 18px;
+}
+
+h4, .heading-4 {
+  font-size: 16px;
+}
+
+h5, .heading-5 {
+  font-size: 14px;
+}
+
+h6, .heading-6 {
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.heading-7 {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.heading-7--bold {
+  @extend .heading-7;
+  font-weight: bold;
+}

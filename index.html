@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mooVtrailers">
+<head>
+    <meta charset="UTF-8">
+    <title>Moo Vtrailers</title>
+
+    <!--bower:css-->
+    <!--endbower-->
+    <link rel="stylesheet" href="{{app-name}}.{{app-version}}.css">
+</head>
+<body>
+
+<div ng-controller="ctrl as vm">
+    Test: {{vm.test}}
+</div>
+
+<movie-list></movie-list>
+
+<!--bower:js-->
+<script src="lib/angular/angular.js"></script>
+<!--endbower-->
+
+
+<script src="{{app-name}}.{{app-version}}.min.js"></script>
+<script type="application/javascript">
+    angular.module('mooVtrailers').controller('ctrl', [function(){
+        var vm = this;
+        vm.test = 'Test Complete';
+    }])
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+/********* BASE ************/
+@import "base/_typography";
+@import "base/_reset";
+@import "base/_base";
+
+
+
+/********* COMPONENT SPECIFIC ************/
+/* inject:imports */
+@import "./app/components/movieList/movieList.scss";
+/* endinject */
