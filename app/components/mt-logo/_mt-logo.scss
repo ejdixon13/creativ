@@ -1,0 +1,14 @@
+mt-logo {
+  min-width: 200px;
+}
+.logo {
+  font-size: 1.9em;
+}
+.logo__base-text {
+  font-family: $font__family--logo-base;;
+}
+
+.logo__accent-text {
+  font-family: $font__family--logo-accent;
+  color: $logo__accent-red;
+}

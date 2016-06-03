@@ -7,26 +7,26 @@
     <!--bower:css-->
     <!--endbower-->
     <link rel="stylesheet" href="mooVtrailers.1.0.0-0.css">
+
+    <!--fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Crushed' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+
+    <script src="https://use.fontawesome.com/f1e92a20a8.js"></script>
 </head>
 <body>
 
-<div ng-controller="ctrl as vm">
-    Test: 
-</div>
 
-<movie-list></movie-list>
+<mt-header></mt-header>
+<mt-theater></mt-theater>
+<mt-popular-titles></mt-popular-titles>
 
 <!--THIRD PARTY-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js" onload="ANGULAR_MIN_JS_LOADED=1"></script>
-
-
+<script src="lib/angular-http-helper/dist/angular-http-helper.min.js"></script>
 
 <script src="mooVtrailers.1.0.0-0.min.js"></script>
-<script type="application/javascript">
-    angular.module('mooVtrailers').controller('ctrl', [function(){
-        var vm = this;
-        vm.test = 'Test Complete';
-    }])
-</script>
 </body>
 </html>

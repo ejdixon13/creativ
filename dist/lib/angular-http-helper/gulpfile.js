@@ -11,17 +11,11 @@ var gulp = require('gulp')
     , util = require('gulp-util')
     , watch = require('gulp-watch')
     , del = require('del')
-    , add = require('gulp-add-src')
     , rename = require('gulp-rename')
     , plumber = require('gulp-plumber')
     , wiredep = require('wiredep')
     , plugins = require('gulp-load-plugins')()
-    , runSequence = require('run-sequence')
-    , handlebars = require('gulp-compile-handlebars')
-    , version = require('./package.json').version
-    , inject = require('gulp-inject')
-    , imagemin = require('gulp-imagemin')
-    , ngtemplate = require('gulp-angular-templatecache');
+    , runSequence = require('run-sequence');
 
 
 
@@ -39,23 +33,23 @@ gulp.task('default', ['prod'], function () {
     'use strict';
 });
 
-gulp.task('local', ['build'], function () {
+gulp.task('local', [], function () {
     'use strict';
 
     console.log('Starting BrowserSync');
     browserSync.init({
         server: {
-            baseDir: "./dist"
+            baseDir: "./"
         }
     });
 
-    gulp.task('file-watch', ['templates'], function(){ runSequence('js', browserSync.reload); });
-
     gulp.task('watch', function(){
-        watch([].concat(config.js, config.htmlFiles) , function(){ gulp.start('file-watch'); });
-        watch([].concat(config.appScss, config.mainScss, config.stylesScss), {events : ['change']}, function(){ gulp.start('sass'); });
-        watch([].concat(config.appScss, config.mainScss, config.stylesScss), {events : ['add', 'unlink']}, function(){ gulp.start('sass-inject'); });
+        gulp.watch(config.js, ['js-watch']);
+        gulp.watch(['index.html'], browserSync.reload);
+        gulp.watch(config.appScss, ['sass']);
     });
+    gulp.task('js-watch', ['js'], browserSync.reload);
+
     gulp.start('watch');
 });
 
@@ -73,7 +67,7 @@ gulp.task('clean', function(cb) {
 gulp.task('build', ['clean'], function (cb) {
     'use strict';
     console.log('Entered build phase');
-    return runSequence('document-templates', 'lib', 'sass', 'templates', 'js', 'images', 'wiredep', cb);
+    return runSequence('sass', 'js', 'wiredep', cb);
 });
 
 /***************************************************************************
@@ -85,34 +79,17 @@ gulp.task('sass', function () {
     'use strict';
     //manages all things css and sass.
 
-    return gulp.src(config.mainScss)
+    return gulp.src('./src/' + config.appName + '.scss')
         .pipe(plumber(onErrorGen))
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(autoprefixer({
             browsers: ['last 2 versions']
         }))
-        .pipe(rename(config.appName + '.' + version + '.css'))
+        .pipe(rename(config.appName + '.css'))
         .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest(config.buildTarget))
         .pipe(browserSync.stream({match: '**/*.css'}));
-});
-
-/*****************************************************************************************************
- * SASS INJECT
- *****************************************************************************************************/
- gulp.task('sass-inject', function(){
-    var target = gulp.src(config.mainScss);
-
-    // It's not necessary to read the files (will speed up things), we're only after their paths:
-    var sources = gulp.src(config.appScss, {read: false});
-
-    return target.pipe(inject(sources, {starttag: '/* inject:imports */',
-            endtag: '/* endinject */',
-            transform: function(filepath){
-                return '@import ".' + filepath + '";';
-            }}))
-        .pipe(gulp.dest('./styles'));
 });
 
 /***************************************************************************
@@ -124,28 +101,13 @@ gulp.task('js', function () {
     'use strict';
     //build the final js output
     return gulp.src(config.js)
-        .on('end', function(){ return del([config.buildTarget + '/generated']); })
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(ngannotate())
         .pipe(stripdebug())
-        .pipe(add.append(config.buildTarget +'/generated/ngtemplates.js'))
-        .pipe(concat(config.appName + '.' + version + '.min.js'))
+        .pipe(concat(config.appName + '.min.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(config.buildTarget));
-});
-
-/*****************************************************************************************************
- * TEMPLATES
- * Injects all of my html templates into $templateCache.
- *****************************************************************************************************/
-gulp.task('templates', function () {
-    return gulp.src('./app/**/*-tpl.html')
-        .pipe(ngtemplate('ngtemplates.js', {
-            module: config.appName,
-            root: 'app/'
-        }))
-        .pipe(gulp.dest(config.buildTarget + '/generated'));
 });
 
 /*****************************************************************************************************
@@ -162,36 +124,6 @@ gulp.task('wiredep', function () {
         .pipe(plugins.inject(gulp.src(config.js.concat(config.appCss)), { relative: true }))
         .pipe(gulp.dest('./'));
 });
-
-/*****************************************************************************************************
- * COPY Lib
- * copies lib folder to build
- *****************************************************************************************************/
- gulp.task('lib', function() {
-     gulp.src(['./lib/**/*'])
-         .pipe(gulp.dest(config.buildTarget+ '/lib'));
- });
-
-/*****************************************************************************************************
- * IMAGES
- *****************************************************************************************************/
- gulp.task('images', function() {
-     gulp.src('./img/**/*')
-         .pipe(imagemin())
-         .pipe(gulp.dest(config.buildTarget + '/img`'));
- });
-/*****************************************************************************************************
- * DOCUMENT TEMPLATES
- *****************************************************************************************************/
- gulp.task('document-templates', function(){
-     return gulp.src('*.html')
-         .pipe(handlebars({
-             'app-name': config.appName,
-             'app-version': version
-         }))
-
-         .pipe( gulp.dest( config.buildTarget) );
- });
 
 /******************************************************************************************
  * ERROR function

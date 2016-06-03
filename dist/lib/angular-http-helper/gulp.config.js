@@ -6,16 +6,13 @@ module.exports = function () {
         //homeViews: homeViews,
         //index: homeViews + 'index.cshtml',
         index: 'index.html',
-        htmlFiles :['*.html', 'app/components/**/*.html'],
         buildTarget: './dist',
-        mainScss : './styles/main.scss',
-        appScss: ['./app/**/*.scss'],
-        stylesScss: ['./styles/**/*.scss', '!./styles/main.scss'],
-        appCss: './dist/mooVtrailers.css',
+        appScss : './src/angular-http-helper.scss',
+        appCss: './dist/angular-http-helper.css',
         appJs: app + '/',
         testFiles : testFiles = [
             '*.js'
-            , './app/**/*.js'
+            , './src/**/*.js'
             , '!Gruntfile.js'
             , '!gulpfile.js'
             , '!gulp.config.js'
@@ -23,8 +20,8 @@ module.exports = function () {
             , '!node_modules/**'
             , '!config/**'
         ],
-        js : [].concat(this.testFiles, ['app.js','!**/*_test.js']),
-        appName: 'mooVtrailers',
+        js : [].concat(this.testFiles, '!**/*_test.js'),
+        appName: 'angular-http-helper',
 
         bower: {
             json: require('./bower.json'),

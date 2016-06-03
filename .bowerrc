@@ -1,6 +1,10 @@
 {
     "directory": "lib",
-    "registry": "http://bower.ldschurch.org",
+    "registry": {
+        "search": [
+            "https://bower.herokuapp.com"
+        ]
+    },
     "scripts" : {
         "postinstall": "gulp build"
     }

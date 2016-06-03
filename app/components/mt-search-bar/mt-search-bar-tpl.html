@@ -1,0 +1,17 @@
+<section class="mt-search-bar" ng-class="{'absolute-center': !theater.searchOnTop}">
+    <!--Search Input-->
+    <h1 ng-if="!theater.searchOnTop">Search Movie Trailers</h1>
+    <input autofocus
+           class="input__main--large"
+           type="text"
+           ng-model="mtSearchBar.searchString"
+           placeholder="Enter Title"
+           ng-change="theater.searchOnTop = true; mtSearchBar.search()">
+
+    <!--Movie Trailer Search Results-->
+    <section class="mt-search-results__container" ng-if="mtSearchBar.searchString != ''">
+        <div class="mt-container__spacer" ng-repeat="movie in mtSearchBar.movies">
+            <movie-search-item movie="movie"></movie-search-item>
+        </div>
+    </section>
+</section>

@@ -1,7 +1,8 @@
 /********* BASE STYLES *************/
 body {
   font-family: $font__family--sans;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: white;
 }
 
 .container-fluid {
@@ -44,18 +45,18 @@ body {
     for styles makes reuse much easier, and your code
     more modular */
 h1, .heading {
-  font-size: 25px;
-  font-family: $font__family--slab;
+  font-size: 35px;
+  font-family: $font__family--sans-serif;
 }
 
 h2, .heading-2 {
   font-size: 20px;
-  font-family: $font__family--slab;
+  font-family: $font__family--sans-serif;
 }
 
 h3, .heading-3 {
   font-size: 18px;
-  font-family: $font__family--slab;
+  font-family: $font__family--sans;
 }
 
 .heading-3--sans-serif {

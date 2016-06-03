@@ -1,0 +1,42 @@
+<section class="mt-container mt-container--gray movie-search-item">
+    <div class="mt-poster" ng-click="playQueue()">
+        <i class="fa fa-play-circle icon__clickable--white"></i>
+        <img width="75px" height="110px" ng-src="{{movie.posters.original}}">
+    </div>
+    <div class="movie-search-item__details">
+        <div class="heading-4">{{movie.title}} ({{movie.year}}) </div>
+
+        <div class="movie-search-item__synopsis">
+            <span ng-if="movie.synopsis">
+                {{movie.synopsis}}
+            </span>
+            <span ng-if="!movie.synopsis">
+                (No synopsis available)
+            </span>
+        </div>
+    </div>
+    <div class="movie-search-item__last-section">
+        <div class="flex-end-to-end">
+            <div class="movie-search-item__mpaa-rating">{{movie.mpaa_rating}}</div>
+            <div class="movie-search-item__add icon__clickable--white">
+                <i class="fa fa-plus-circle"></i>
+            </div>
+        </div>
+
+        <div class="movie-search-item__ratings">
+            <!--CRITICS RATING-->
+            <div class="icon"
+                 ng-class="{'icon--tomato' : movie.ratings.critics_rating == 'Fresh', 'icon--rotten-tomato' : movie.ratings.critics_rating == 'Rotten', 'icon--certified-fresh' : movie.ratings.critics_rating == 'Certified Fresh'}"
+                 ng-if="movie.ratings.critics_score != -1">
+            </div>
+            <div class="movie-search-item__rating-percent" ng-if="movie.ratings.critics_score != -1"> {{movie.ratings.critics_score}}%</div>
+
+            <!--AUDIENCE RATING-->
+            <div class="icon icon--popcorn"
+                 ng-class="{'icon--popcorn' : movie.ratings.audience_rating == 'Upright', 'icon--tipped-popcorn' : movie.ratings.audience_rating == 'Spilled'}"
+                 ng-if="movie.ratings.audience_score != -1"></div>
+            <div class="movie-search-item__rating-percent" ng-if="movie.ratings.audience_score != -1">{{movie.ratings.audience_score}}%</div>
+        </div>
+    </div>
+
+</section>
