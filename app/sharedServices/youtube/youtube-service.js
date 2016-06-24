@@ -5,7 +5,7 @@
     'use strict';
 
     angular
-        .module('mooVtrailers')
+        .module('mooVtrailers.apiServices')
         .factory('YouTubeService', YouTubeService);
     YouTubeService.$inject = ['HttpHelper', '$window'];
 

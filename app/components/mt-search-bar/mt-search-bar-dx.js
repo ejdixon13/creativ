@@ -18,6 +18,7 @@
         var mtSearchBar = this;
         mtSearchBar.searchString = '';
         mtSearchBar.search = search;
+        mtSearchBar.hideResults = false;
 
         function search() {
             RottenTomatoesService.getMoviesByQuery(mtSearchBar.searchString).then(function(response){

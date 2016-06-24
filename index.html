@@ -2,17 +2,22 @@
 <html lang="en" ng-app="mooVtrailers">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Moo Vtrailers</title>
 
     <!--bower:css-->
     <!--endbower-->
-    <link rel="stylesheet" href="{{app-name}}.{{app-version}}.css">
 
     <!--fonts-->
     <link href='https://fonts.googleapis.com/css?family=Crushed' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+
+    <!--Angular Material-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.css">
+
+    <link rel="stylesheet" href="{{app-name}}.{{app-version}}.css">
 
     <script src="https://use.fontawesome.com/f1e92a20a8.js"></script>
 </head>
@@ -23,9 +28,16 @@
 <mt-theater></mt-theater>
 <mt-popular-titles></mt-popular-titles>
 
+<script src="lib/jquery-2.0.0.custom/jquery-sizzle.min.js"></script>
 <!--THIRD PARTY-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js" onload="ANGULAR_MIN_JS_LOADED=1"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
 <script src="lib/angular-http-helper/dist/angular-http-helper.min.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
 
 <script src="{{app-name}}.{{app-version}}.min.js"></script>
 </body>

@@ -1,6 +1,7 @@
 /********* BASE ************/
 @import "base/_colors";
 @import "base/_typography";
+@import "base/_mixins";
 @import "base/_reset";
 @import "base/_base";
 @import "layout/_layout";
@@ -13,9 +14,9 @@
 /********* COMPONENT SPECIFIC ************/
 /* inject:imports */
 @import "./app/components/movie-search-item/_movie-search-item.scss";
-@import "./app/components/mt-logo/_mt-logo.scss";
-@import "./app/components/mt-header/_mt-header.scss";
-@import "./app/components/mt-popular-titles/_mt-popular-titles.scss";
 @import "./app/components/mt-search-bar/_mt-search-bar.scss";
+@import "./app/components/mt-header/_mt-header.scss";
+@import "./app/components/mt-logo/_mt-logo.scss";
+@import "./app/components/mt-popular-titles/_mt-popular-titles.scss";
 @import "./app/components/mt-theater/_mt-theater.scss";
 /* endinject */

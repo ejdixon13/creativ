@@ -1,7 +1,8 @@
 .movie-search-item{
   display: flex;
   position: relative;
-  font-size: .8em;
+  font-size: 12px;
+  @include box_shadow(2);
 }
 
 .movie-search-item__poster{
@@ -55,7 +56,18 @@
   width: 40%;
 }
 .movie-search-item__add {
+  @include box_shadow(2);
+  border-radius: 30px;
+  height: 30px;
+  .fa-plus-circle {
+    position: relative;
+    top: -4px;
+  }
   position: relative;
   top: -8px;
   font-size: 32px;
+}
+
+.movie-search-item__add:hover {
+  @include box_shadow(3);
 }

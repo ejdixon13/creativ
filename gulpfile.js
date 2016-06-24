@@ -20,6 +20,7 @@ var gulp = require('gulp')
     , handlebars = require('gulp-compile-handlebars')
     , version = require('./package.json').version
     , inject = require('gulp-inject')
+    , gulpif = require('gulp-if')
     , imagemin = require('gulp-imagemin')
     , ngtemplate = require('gulp-angular-templatecache');
 
@@ -130,7 +131,7 @@ gulp.task('js', function () {
         .pipe(stripdebug())
         .pipe(add.append(config.buildTarget +'/generated/ngtemplates.js'))
         .pipe(concat(config.appName + '.' + version + '.min.js'))
-        .pipe(uglify())
+        .pipe(gulpif(!util.env.dev, uglify({ mangle: false })))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(config.buildTarget));
 });
@@ -168,7 +169,7 @@ gulp.task('wiredep', function () {
  * copies lib folder to build
  *****************************************************************************************************/
  gulp.task('lib', function() {
-     gulp.src(['./lib/**/*'])
+     gulp.src(['./lib/**/*', './lib-custom/**/*'])
          .pipe(gulp.dest(config.buildTarget+ '/lib'));
  });
 
@@ -178,7 +179,7 @@ gulp.task('wiredep', function () {
  gulp.task('images', function() {
      gulp.src('./img/**/*')
          .pipe(imagemin())
-         .pipe(gulp.dest(config.buildTarget + '/img`'));
+         .pipe(gulp.dest(config.buildTarget + '/img'));
  });
 /*****************************************************************************************************
  * DOCUMENT TEMPLATES

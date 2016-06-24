@@ -1,8 +1,19 @@
+/********* VARIABLES *************/
+$iphone-6-width: 375px;
+
 /********* BASE STYLES *************/
-body {
+body, html {
   font-family: $font__family--sans;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: inherit;
+  background: url('img/Wood-Pattern-Wallpaper-min.jpg');
+  background-repeat: repeat-y;
+  //height: 106vh;
   color: white;
+}
+@media (max-width: $iphone-6-width) {
+  body {
+    font-size: 12px;
+  }
 }
 
 .container-fluid {
@@ -50,7 +61,7 @@ h1, .heading {
 }
 
 h2, .heading-2 {
-  font-size: 20px;
+  font-size: 1.3em; //20px;
   font-family: $font__family--sans-serif;
 }
 
@@ -64,7 +75,7 @@ h3, .heading-3 {
 }
 
 h4, .heading-4 {
-  font-size: 16px;
+  font-size: 1.1em; //16px;
 }
 
 h5, .heading-5 {

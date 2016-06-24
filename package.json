@@ -14,8 +14,15 @@
     "browser-sync": "2.11.1",
     "del": "1.2.1",
     "gulp": "3.9.1",
+    "gulp-add-src": "0.2.0",
+    "gulp-angular-templatecache": "1.8.0",
     "gulp-autoprefixer": "2.3.1",
+    "gulp-compile-handlebars": "0.5.1",
     "gulp-concat": "2.6.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "2.4.0",
+    "gulp-inject": "2.2.0",
+    "gulp-load-plugins": "1.2.0",
     "gulp-ng-annotate": "0.5.3",
     "gulp-plumber": "1.1.0",
     "gulp-rename": "1.2.2",
@@ -26,12 +33,6 @@
     "gulp-util": "3.0.7",
     "gulp-watch": "4.3.5",
     "run-sequence": "1.1.5",
-    "gulp-inject": "2.2.0",
-    "gulp-load-plugins": "1.2.0",
-    "wiredep": "3.0.0",
-    "gulp-add-src": "0.2.0",
-    "gulp-angular-templatecache": "1.8.0",
-    "gulp-compile-handlebars": "0.5.1",
-    "gulp-imagemin" : "2.4.0"
+    "wiredep": "3.0.0"
   }
 }
