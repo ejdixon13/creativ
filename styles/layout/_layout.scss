@@ -11,15 +11,3 @@
 .position-relative {
   position: relative;
 }
-
-@media (max-width: $iphone-6-width){
-  .hidden-sm {
-    display: none;
-  }
-}
-
-@media (min-width: $iphone-6-width ) {
-  .visible-sm-only {
-    display: none;
-  }
-}

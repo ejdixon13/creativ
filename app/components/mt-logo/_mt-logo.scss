@@ -1,7 +1,7 @@
 mt-logo {
   min-width: 200px;
 }
-@media (min-width: $iphone-6-width) {
+@media (max-width: $iphone-6-plus-width) {
   mt-logo {
     min-width: 10px;
   }

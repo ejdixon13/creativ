@@ -6,10 +6,14 @@ angular.module('mooVtrailers', [
         'ngAnimate',
         'ngMaterial',
         'ngAria',
+        'ngMockE2E',
         'mooVtrailers.core',
         'mooVtrailers.apiServices'
     ])
-    .run([function () {
+    .run(['HttpBackendDataService', function (HttpBackendDataService) {
+        //HTTP MOCKED BACKEND
+        HttpBackendDataService.setupBackend(false);
+
         //IFRAME PLAYER SETUP
         var tag = document.createElement('script');
         tag.src = "http://www.youtube.com/iframe_api";

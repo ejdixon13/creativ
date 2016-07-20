@@ -20,6 +20,10 @@
     position: absolute;
     text-align: center;
     display: block;
+
+    //position: absolute;
+    //top: 50%;
+    //transform: translateY(-50%);
   }
   .initial-search-bar {
     @extend .search-absolute-center;

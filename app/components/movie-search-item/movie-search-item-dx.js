@@ -16,14 +16,17 @@
       ////////////////////////////////////////////////////
       function linker(scope, element, attrs, ctrl) {
           scope.playQueue = function playQueue() {
+              ctrl.searchString = '';
+              MtTheaterService.theater.showTheater = true;
+              YouTubeService.playVideoById(scope.movie.trailers[0].key);
 
-              YouTubeService.getYouTubeIdByMovieItem(scope.movie).then(function(movieId){
-                  if(movieId != 'No trailer found') {
-                      ctrl.searchString = '';
-                      MtTheaterService.theater.showTheater = true;
-                      YouTubeService.playVideoById(movieId);
-                  }
-              });
+              //YouTubeService.getYouTubeIdByMovieItem(scope.movie).then(function(movieId){
+              //    if(movieId != 'No trailer found') {
+              //        ctrl.searchString = '';
+              //        MtTheaterService.theater.showTheater = true;
+              //        YouTubeService.playVideoById(movieId);
+              //    }
+              //});
               //$rootScope.$broadcast('play-queue', movieKey);
           };
 

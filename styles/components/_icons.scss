@@ -3,24 +3,37 @@
   height: 50px;
 }
 
+.icon-responsive {
+  width: 20%;
+  height: 0;
+  padding-bottom: 20%;
+  background-size: 100%;
+  display: block;
+}
+
 .icon--tomato {
-  background: url(img/rt_lg.png) 0 0;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 1%;
 }
 
 .icon--rotten-tomato {
-  background: url(img/rt_lg.png) 0 -50px;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 20%;
 }
 
 .icon--certified-fresh {
-  background: url(img/rt_lg.png) 0 -100px;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 -80%;
 }
 
 .icon--popcorn {
-  background: url(img/rt_lg.png) 0 -150px;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 60%;
 }
 
 .icon--tipped-popcorn {
-  background: url(img/rt_lg.png) 0 -250px;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 10%;
 }
 
 .icon__clickable--white{

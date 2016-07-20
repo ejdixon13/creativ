@@ -12,11 +12,21 @@
     //FACTORY METHOD
     function TmdbService(HttpHelper) {
         return {
-            getMoviesByQuery : getMoviesByQuery
+            getMoviesByQuery: getMoviesByQuery,
+            getMovieByIMDBId: getMovieByIMDBId,
+            getMovieTrailerById: getMovieTrailerById
         };
         /////////////////////////////////////////////////////////
         function getMoviesByQuery(query) {
-            return HttpHelper.get('http://api.themoviedb.org/3/search/movie?api_key=98a62afbdaaba0e0968f74212a9f7561&&include_adult=falsequery=' + query);
+            return HttpHelper.get('http://api.themoviedb.org/3/search/movie?api_key=98a62afbdaaba0e0968f74212a9f7561&include_adult=false&query=' + query);
+        }
+
+        function getMovieByIMDBId(imdbId) {
+            return HttpHelper.get('https://api.themoviedb.org/3/find/tt' + imdbId + '?external_source=imdb_id&api_key=98a62afbdaaba0e0968f74212a9f7561');
+        }
+
+        function getMovieTrailerById(id) {
+            return HttpHelper.get('https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=98a62afbdaaba0e0968f74212a9f7561&adult=false');
         }
     }
 })();

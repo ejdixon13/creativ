@@ -7,8 +7,9 @@
   position: relative;
   .fa-play-circle {
     position: absolute;
-    top: 32%;
-    left: 26%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 33%;
     font-size: 40px;
   }
 }
@@ -24,7 +25,7 @@
 }
 
 .mt-container__spacer {
-  margin-bottom: 3px;
+ margin-bottom: 10px;
 }
 
 .mt-video-container {
