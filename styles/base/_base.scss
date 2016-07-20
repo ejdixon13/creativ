@@ -1,15 +1,14 @@
 /********* VARIABLES *************/
 $iphone-6-width: 375px;
-$iphone-6-plus-width: 414px;
 
 /********* BASE STYLES *************/
 body, html {
   font-family: $font__family--sans;
   background-color: inherit;
-  background: url("img/Wood-Pattern-Wallpaper-min.jpg") no-repeat center center fixed;
-  /* background-repeat: no-repeat; */
+  background: url('img/Wood-Pattern-Wallpaper-min.jpg');
+  background-repeat: repeat-y;
+  //height: 106vh;
   color: white;
-  background-size: 100% 100%;
 }
 @media (max-width: $iphone-6-width) {
   body {

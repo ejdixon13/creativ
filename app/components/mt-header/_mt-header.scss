@@ -1,6 +1,5 @@
 .mt-header{
   padding: 10px 20px;
-  position: relative;
   mt-logo {
     margin-right: 20px;
   }
@@ -17,10 +16,3 @@
   }
 }
 
-.mt-header-search-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 20px;
-  font-size: 1.8em;
-}

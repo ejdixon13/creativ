@@ -19,7 +19,6 @@
             playVideoById : playVideoById
         };
         /////////////////////////////////////////////////////////
-        //TODO: Remove related videos after trailer finishes
         function getYouTubeByQuery(queryString) {
             return HttpHelper.jsonp('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + queryString  + '&key=AIzaSyCcE9Fjlo5d-4gpRJkZ97a7KFB2k8pvcaM&callback=JSON_CALLBACK', true, 'youtube-query');
         }
