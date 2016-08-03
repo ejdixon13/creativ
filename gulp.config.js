@@ -3,8 +3,6 @@ module.exports = function () {
     //var homeViews = 'views/home/';
 
     var config = {
-        //homeViews: homeViews,
-        //index: homeViews + 'index.cshtml',
         index: 'index.html',
         htmlFiles :['*.html', 'app/components/**/*.html'],
         buildTarget: './dist',
@@ -13,17 +11,7 @@ module.exports = function () {
         stylesScss: ['./styles/**/*.scss', '!./styles/main.scss'],
         appCss: './dist/mooVtrailers.css',
         appJs: app + '/',
-        testFiles : testFiles = [
-            '*.js'
-            , './app/**/*.js'
-            , '!Gruntfile.js'
-            , '!gulpfile.js'
-            , '!gulp.config.js'
-            , '!bower_components/**'
-            , '!node_modules/**'
-            , '!config/**'
-        ],
-        js : [].concat(this.testFiles, ['app.js','!**/*_test.js']),
+        testFiles : [ '*.js', './app/**/*.js', '!Gruntfile.js', '!gulpfile.js', '!gulp.config.js', '!bower_components/**', '!node_modules/**', '!config/**'],
         appName: 'mooVtrailers',
 
         bower: {
@@ -33,6 +21,7 @@ module.exports = function () {
             relative: true
         }
     };
+    config.js = config.testFiles.concat(['app.js','!**/*_test.js']);
 
     config.getWiredepDefaultOptions = function () {
         var options = {

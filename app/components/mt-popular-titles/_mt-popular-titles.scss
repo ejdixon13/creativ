@@ -3,8 +3,11 @@
   display: -ms-flexbox;  /* TWEENER - IE 10 */
   display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
   display: flex;
-  flex-wrap: wrap;
-  margin-left: -20px;
+  //flex-wrap: wrap;
+  margin-left: -10px;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  //TODO: verify momentum scrolling works
 
   .mt-poster-container {
     cursor: pointer;
@@ -15,4 +18,8 @@
     top: -25px;
     white-space: nowrap;
   }
+}
+
+.mt-popular-titles__container::-webkit-scrollbar {
+  display: none;
 }

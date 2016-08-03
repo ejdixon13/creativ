@@ -91,7 +91,7 @@ gulp.task('sass', function () {
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(autoprefixer({
-            browsers: ['last 2 versions']
+            browsers: ['last 2 versions', '> 5%']
         }))
         .pipe(rename(config.appName + '.' + version + '.css'))
         .pipe(sourcemaps.write('./maps'))

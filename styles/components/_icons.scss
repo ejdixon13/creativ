@@ -3,24 +3,37 @@
   height: 50px;
 }
 
+.icon-responsive {
+  width: 20%;
+  height: 0;
+  padding-bottom: 20%;
+  background-size: 100%;
+  display: block;
+}
+
 .icon--tomato {
-  background: url(img/rt_lg.png) 0 0;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 1%;
 }
 
 .icon--rotten-tomato {
-  background: url(img/rt_lg.png) 0 -50px;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 20%;
 }
 
 .icon--certified-fresh {
-  background: url(img/rt_lg.png) 0 -100px;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 -80%;
 }
 
 .icon--popcorn {
-  background: url(img/rt_lg.png) 0 -150px;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 60%;
 }
 
 .icon--tipped-popcorn {
-  background: url(img/rt_lg.png) 0 -250px;
+  background-image: url("img/rt_lg.png");
+  background-position: 0 99%;
 }
 
 .icon__clickable--white{
@@ -30,4 +43,16 @@
 
 .icon__clickable--white:hover{
   color: white;
+}
+
+.fa {
+  @include text_shadow(2);
+  transform: rotate(0deg);
+  transition: transform .3s ease ;
+}
+
+
+.rotate-45-deg {
+  transform: rotate(-90deg);
+  transition: transform .3s ease ;
 }

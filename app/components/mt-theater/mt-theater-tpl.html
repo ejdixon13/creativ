@@ -1,5 +1,8 @@
-<section class="mt-video-container">
-    <div ng-show="mtTheater.theater.showTheater">
+
+<section class="mt-video-container" ng-class="{'mobile-hidden': !mtTheater.theater.showTheater}">
+    <div>
         <section id="player"></section>
     </div>
+
 </section>
+<!--<button ng-click="openBottomSheet()">Open Bottom Sheet</button>-->

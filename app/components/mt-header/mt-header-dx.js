@@ -10,11 +10,11 @@
         templateUrl: 'app/components/mt-header/mt-header-tpl.html'
       };
     }])
-    .controller('MtHeaderCtrl', [ 'MtTheaterService', '$scope', '$mdSidenav', function(MtTheaterService, $scope, $mdSidenav) {
+    .controller('MtHeaderCtrl', [ 'MtTheaterService', '$scope', function(MtTheaterService, $scope) {
         var mtHeader = this;
         $scope.theater = MtTheaterService.theater;
-        $scope.openLeftMenu = function() {
-            $mdSidenav('left').toggle();
-        }
+        //$scope.openLeftMenu = function() {
+        //    $mdSidenav('left').toggle();
+        //}
     }]);
 })();

@@ -1,0 +1,23 @@
+.mt-poster {
+  .poster-action {
+    position: absolute;
+    top: 32%;
+    text-align: center;
+    left: -2%;
+  }
+}
+
+.mt-poster {
+  position: relative;
+  .fa-play-circle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 33%;
+    font-size: 40px;
+  }
+}
+.mt-poster-container {
+  margin-left: 10px;
+  margin-top: 10px;
+}

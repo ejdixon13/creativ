@@ -1,5 +1,8 @@
-.layout__inner-padding--small {
+.inner-padding--small {
   padding: 0 20px;
+}
+.inner-padding--small--left {
+  padding: 0 0 0 20px;
 }
 
 
@@ -12,14 +15,8 @@
   position: relative;
 }
 
-@media (max-width: $iphone-6-width){
-  .hidden-sm {
-    display: none;
-  }
-}
-
-@media (min-width: $iphone-6-width ) {
-  .visible-sm-only {
+@media (max-width: $xs-width) {
+  .mobile-hidden {
     display: none;
   }
 }

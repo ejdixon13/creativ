@@ -1,42 +1,94 @@
-<section class="mt-container mt-container--gray movie-search-item">
-    <div class="mt-poster" ng-click="playQueue()">
-        <span><i class="fa fa-play-circle icon__clickable--white"></i></span>
-        <img width="75px" height="110px" ng-src="{{movie.posters.original}}">
-    </div>
-    <div class="movie-search-item__details">
-        <div class="heading-4">{{movie.title}} ({{movie.year}}) </div>
+<!--DESKTOP VERSION-->
+<section class="mt-container mt-container--gray movie-search-item" hide-xs>
 
-        <div class="movie-search-item__synopsis">
-            <span ng-if="movie.synopsis">
-                {{movie.synopsis}}
-            </span>
-            <span ng-if="!movie.synopsis">
-                (No synopsis available)
-            </span>
-        </div>
-    </div>
-    <div class="movie-search-item__last-section">
-        <div class="flex-end-to-end">
-            <div class="movie-search-item__mpaa-rating">{{movie.mpaa_rating}}</div>
-            <div class="movie-search-item__add icon__clickable--white">
-                <i class="fa fa-plus-circle"></i>
+    <mt-poster ng-click="playQueue()"
+               has-trailer="movie.hasTrailer"
+               p-src="{{(movie.highResPoster) ? 'http://image.tmdb.org/t/p/w185/' + movie.highResPoster : movie.posters.original}}"
+               p-width="102px"
+               p-height="153px"
+               elevation="4"></mt-poster>
+
+    <!--MOVIE SEARCH ITEM DETAILS CONTAINER-->
+    <section class="movie-search-item__details--container">
+        <!--MOVIE SEARCH ITEM DETAILS-->
+        <div class="movie-search-item__details">
+            <div class="heading-4">{{movie.title}} ({{movie.year}}) </div>
+
+            <div class="movie-search-item__synopsis">
+                <span ng-if="movie.synopsis">
+                    {{movie.synopsis}}
+                </span>
+                <span ng-if="!movie.synopsis">
+                    (No synopsis available)
+                </span>
             </div>
         </div>
-
-        <div class="movie-search-item__ratings">
-            <!--CRITICS RATING-->
-            <div class="icon"
-                 ng-class="{'icon--tomato' : movie.ratings.critics_rating == 'Fresh', 'icon--rotten-tomato' : movie.ratings.critics_rating == 'Rotten', 'icon--certified-fresh' : movie.ratings.critics_rating == 'Certified Fresh'}"
-                 ng-if="movie.ratings.critics_score != -1">
+        <div class="movie-search-item__last-section">
+            <div class="flex-end-to-end">
+                <div class="movie-search-item__mpaa-rating">{{movie.mpaa_rating}}</div>
+                <div class="movie-search-item__add icon__clickable--white" ng-if="movie.hasTrailer">
+                    <i class="fa fa-plus-circle"></i>
+                </div>
             </div>
-            <div class="movie-search-item__rating-percent" ng-if="movie.ratings.critics_score != -1"> {{movie.ratings.critics_score}}%</div>
 
-            <!--AUDIENCE RATING-->
-            <div class="icon icon--popcorn"
-                 ng-class="{'icon--popcorn' : movie.ratings.audience_rating == 'Upright', 'icon--tipped-popcorn' : movie.ratings.audience_rating == 'Spilled'}"
-                 ng-if="movie.ratings.audience_score != -1"></div>
-            <div class="movie-search-item__rating-percent" ng-if="movie.ratings.audience_score != -1">{{movie.ratings.audience_score}}%</div>
+            <div class="movie-search-item__ratings">
+                <!--CRITICS RATING-->
+                <div class="icon-responsive"
+                     ng-class="{'icon--tomato' : movie.ratings.critics_rating == 'Fresh',
+                     'icon--rotten-tomato' : movie.ratings.critics_rating == 'Rotten',
+                     'icon--certified-fresh' : movie.ratings.critics_rating == 'Certified Fresh'}"
+                     ng-if="movie.ratings.critics_score != -1">
+                </div>
+                <div class="movie-search-item__rating-percent" ng-if="movie.ratings.critics_score != -1"> {{movie.ratings.critics_score}}%</div>
+
+                <!--AUDIENCE RATING-->
+                <div class="icon-responsive icon--popcorn"
+                     ng-class="{'icon--popcorn' : movie.ratings.audience_rating == 'Upright',
+                     'icon--tipped-popcorn' : movie.ratings.audience_rating == 'Spilled'}"
+                     ng-if="movie.ratings.audience_score != -1"></div>
+                <div class="movie-search-item__rating-percent" ng-if="movie.ratings.audience_score != -1">{{movie.ratings.audience_score}}%</div>
+            </div>
         </div>
-    </div>
+    </section>
 
+</section>
+
+<!--MOBILE VERSION-->
+<section class="mt-relative-container" hide-gt-xs ng-init="showInfo = false">
+    <section class="movie-search-item__info-icon">
+        <i class="fa fa-info-circle" ng-class="{'rotate-45-deg': showInfo}" ng-click="showInfo = !showInfo"></i>
+    </section>
+
+
+    <section class="mt-container--gray overflow-hidden position-relative" >
+        <section class="movie-search-item__details--container" ng-click="(movie.hasTrailer) ? playQueue() : showNoTrailerMessage()">
+            <div class="heading-5">{{movie.title}} ({{movie.year}}) </div>
+        </section>
+
+        <!--RATINGS / ADD ICON-->
+        <section class="movie-search-item__information " ng-class="{'movie-search-item__information--hide-right' : !showInfo}">
+
+            <div class="movie-search-item__ratings">
+                <!--ADD ICON-->
+                <div class="movie-search-item__add-icon"><i class="fa fa-plus-circle"></i></div>
+
+                <!--CRITICS RATING-->
+                <div class="icon-responsive"
+                     ng-class="{'icon--tomato' : movie.ratings.critics_rating == 'Fresh',
+                 'icon--rotten-tomato' : movie.ratings.critics_rating == 'Rotten',
+                 'icon--certified-fresh' : movie.ratings.critics_rating == 'Certified Fresh'}"
+                     ng-if="movie.ratings.critics_score != -1">
+                </div>
+                <div class="movie-search-item__rating-percent" ng-if="movie.ratings.critics_score != -1"> {{movie.ratings.critics_score}}%</div>
+
+                <!--AUDIENCE RATING-->
+                <div class="icon-responsive icon--popcorn"
+                     ng-class="{'icon--popcorn' : movie.ratings.audience_rating == 'Upright',
+                 'icon--tipped-popcorn' : movie.ratings.audience_rating == 'Spilled'}"
+                     ng-if="movie.ratings.audience_score != -1"></div>
+                <div class="movie-search-item__rating-percent" ng-if="movie.ratings.audience_score != -1">{{movie.ratings.audience_score}}%</div>
+
+            </div>
+        </section>
+    </section>
 </section>

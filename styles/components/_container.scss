@@ -3,28 +3,26 @@
   width:100%;;
 }
 
-.mt-poster {
-  position: relative;
-  .fa-play-circle {
-    position: absolute;
-    top: 32%;
-    left: 26%;
-    font-size: 40px;
-  }
-}
-.mt-poster-container {
-  margin-left: 20px;
-  margin-top: 10px;
-  width: 75px;
-  height: 110px;
-}
-
 .mt-container--gray {
   background-color: $transparent-gray;
 }
 
 .mt-container__spacer {
-  margin-bottom: 3px;
+ margin-bottom: 5px;
+}
+
+.mt-relative-container {
+  position: relative;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+@media (min-width: $iphone-6-width) {
+  .mt-container__spacer {
+    margin-bottom: 10px;
+  }
 }
 
 .mt-video-container {

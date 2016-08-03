@@ -1,0 +1,14 @@
+.mt-message {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  top: -50px;
+  padding: 10px 0;
+  background: $transparent-gray--dark;
+  transition: top .3s ease ;
+  z-index: 1000;
+}
+
+.mt-message-show {
+  top: 0;
+}
