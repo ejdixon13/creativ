@@ -13,8 +13,10 @@
     .controller('MtHeaderCtrl', [ 'MtTheaterService', '$scope', function(MtTheaterService, $scope) {
         var mtHeader = this;
         $scope.theater = MtTheaterService.theater;
-        //$scope.openLeftMenu = function() {
-        //    $mdSidenav('left').toggle();
-        //}
+        mtHeader.setFocusOnSearch = setFocusOnSearch;
+
+        function setFocusOnSearch() {
+            $scope.theater.showMobileSearch = true;
+        }
     }]);
 })();

@@ -7,15 +7,16 @@
     angular
         .module('mooVtrailers.apiServices')
         .factory('TmdbService', TmdbService);
-    TmdbService.$inject = ['HttpHelper'];
+    TmdbService.$inject = ['HttpHelper', '$q', '$timeout'];
 
     //FACTORY METHOD
-    function TmdbService(HttpHelper) {
+    function TmdbService(HttpHelper, $q, $timeout) {
         return {
             getMoviesByQuery: getMoviesByQuery,
             getMovieByIMDBId: getMovieByIMDBId,
             getMovieTrailerById: getMovieTrailerById,
-            getUpcomingMovies: getUpcomingMovies
+            getUpcomingMovies: getUpcomingMovies,
+            getMovieList: getMovieList
         };
         /////////////////////////////////////////////////////////
         function getMoviesByQuery(query) {
@@ -27,11 +28,18 @@
         }
 
         function getMovieTrailerById(id) {
+            //TODO: See if i can get around request limit
             return HttpHelper.get('https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=98a62afbdaaba0e0968f74212a9f7561&adult=false');
         }
 
         function getUpcomingMovies() {
             return HttpHelper.get('https://api.themoviedb.org/3/movie/upcoming?api_key=98a62afbdaaba0e0968f74212a9f7561&adult=false');
+        }
+
+        function getMovieList(listChoice) {
+            if(listChoice) {
+                return HttpHelper.get('https://api.themoviedb.org/3/movie/' + listChoice +'?api_key=98a62afbdaaba0e0968f74212a9f7561&adult=false');
+            }
         }
     }
 })();

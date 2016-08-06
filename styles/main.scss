@@ -9,16 +9,18 @@
 @import "components/_header";
 @import "components/_container";
 @import "components/_icons";
+@import "components/_widgets";
 
 
 /********* COMPONENT SPECIFIC ************/
 /* inject:imports */
 @import "./app/components/movie-search-item/_movie-search-item.scss";
+@import "./app/components/mt-featured-list/_mt-featured-list.scss";
 @import "./app/components/mt-header/_mt-header.scss";
 @import "./app/components/mt-logo/_mt-logo.scss";
-@import "./app/components/mt-popular-titles/_mt-popular-titles.scss";
 @import "./app/components/mt-poster/mt-poster.scss";
 @import "./app/components/mt-search-bar/_mt-search-bar.scss";
 @import "./app/components/mt-theater/_mt-theater.scss";
+@import "./app/components/mt-title-playing-info/mt-title-playing-info.scss";
 @import "./app/sharedServices/mt-message-service/mt-message.scss";
 /* endinject */

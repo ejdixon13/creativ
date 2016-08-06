@@ -1,0 +1,16 @@
+<section class="inner-padding--small--left">
+    <h2>{{mtFeaturedList.listTitle}}</h2>
+    <section class="mt-popular-titles__container">
+        <!--TODO: add arrows to swipe titles on desktop-->
+        <mt-poster ng-repeat="featuredMovie in mtFeaturedList.featuredMovieList"
+                   ng-if="featuredMovie.hasTrailer"
+                   ng-click="mtFeaturedList.playQueue(featuredMovie.trailers)"
+                   has-trailer="featuredMovie.hasTrailer"
+                   p-src="{{'http://image.tmdb.org/t/p/w185/' + featuredMovie.poster_path}}"
+                   class="mt-poster-container"
+                   elevation="4"
+                   p-width="102px"
+                   p-height="153px">
+        </mt-poster>
+    </section>
+</section>

@@ -1,0 +1,35 @@
+<section class="mt-container title-playing-info--backdrop-container"
+         ng-if="vm.movieService.playingMovie">
+    <!--BACKGROUND IMAGE-->
+    <img class="title-playing-info--backdrop" ng-src="{{'http://image.tmdb.org/t/p/w185' + vm.movieService.playingMovie.backdrop}}">
+    <section class="title-playing-info--top">
+        <mt-poster ng-click="playQueue()"
+                   has-trailer="vm.movieService.playingMovie.hasTrailer"
+                   p-src="{{(vm.movieService.playingMovie.highResPoster) ? 'http://image.tmdb.org/t/p/w185/' + vm.movieService.playingMovie.highResPoster : vm.movieService.playingMovie.posters.original}}"
+                   p-width="50px"
+                   p-height="75px"
+                   hide-play-button="true"
+                   elevation="4"></mt-poster>
+
+        <!--TITLE PLAYING DETAILS CONTAINER-->
+        <section class="title-playing-info__top-right-details">
+            <!--MOVIE SEARCH ITEM DETAILS-->
+            <div class="flex-end-to-end">
+                <div class="heading-4">{{vm.movieService.playingMovie.title}} ({{vm.movieService.playingMovie.year}}) </div>
+                <div class="mpaa-rating">{{vm.movieService.playingMovie.mpaa_rating}}</div>
+            </div>
+
+            <mt-ratings rating-data="vm.movieService.playingMovie.ratings"></mt-ratings>
+        </section>
+    </section>
+
+
+    <section class="movie-search-item__synopsis title-playing-info--bottom">
+                <span ng-if="vm.movieService.playingMovie.synopsis">
+                    {{vm.movieService.playingMovie.synopsis}}
+                </span>
+                <span ng-if="!vm.movieService.playingMovie.synopsis">
+                    (No synopsis available)
+                </span>
+    </section>
+</section>

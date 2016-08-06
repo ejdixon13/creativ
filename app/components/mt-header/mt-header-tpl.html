@@ -1,10 +1,10 @@
 <section class="mt-header"
-         ng-class="{'header--flex' : theater.searchOnTop}">
-    <mt-logo hide-gt-xs is-minimal-version="theater.searchOnTop"></mt-logo>
+         ng-class="{'header--flex' : theater.searchOnTop || theater.showMobileSearch}">
+    <mt-logo hide-gt-xs is-minimal-version="theater.showMobileSearch"></mt-logo>
     <mt-logo hide-xs></mt-logo>
 
     <!--SEARCH ICON-->
-    <span class="mt-header-search-icon" hide-gt-xs ng-if="!theater.searchOnTop" ng-click="theater.searchOnTop = true"><i class="fa fa-search"></i></span>
+    <span class="mt-header-search-icon" hide-gt-xs ng-if="!theater.showMobileSearch" ng-click="mtHeader.setFocusOnSearch()"><i class="fa fa-search"></i></span>
     <mt-search-bar></mt-search-bar>
 
 

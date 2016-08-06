@@ -1,0 +1,15 @@
+.mpaa-rating{
+  font-family: $font__family--sans-serif;
+  border: 1px solid;
+  padding: 3px;
+  height: 1.2em;
+  line-height: 1.1em;
+  background-color: $transparent-white--background;
+  min-width: 25px;
+}
+
+.mt-ratings {
+  display: flex;
+  align-items: flex-end;
+  width: 14.1em;
+}

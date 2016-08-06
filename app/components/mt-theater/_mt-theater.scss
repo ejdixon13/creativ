@@ -1,4 +1,5 @@
 .mt-video-container{
+  z-index: 2;
   background-color: $movie-screen-black;
   @include box_shadow(5);
 }

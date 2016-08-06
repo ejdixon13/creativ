@@ -2,7 +2,8 @@
   'use strict';
 
   angular.module('mooVtrailers')
-    .directive('movieSearchItem', ['$rootScope', 'YouTubeService', 'MtTheaterService', 'MtMessageService', function ($rootScope, YouTubeService, MtTheaterService, MtMessageService ) {
+    .directive('movieSearchItem', ['$rootScope', 'YouTubeService', 'MtTheaterService', 'MtMessageService', 'MovieDataService',
+        function ($rootScope, YouTubeService, MtTheaterService, MtMessageService, MovieDataService ) {
       return {
           restrict: 'E',
           link: linker,
@@ -18,16 +19,8 @@
           scope.playQueue = function playQueue() {
               ctrl.searchString = '';
               MtTheaterService.theater.showTheater = true;
+              MovieDataService.playingMovie = angular.copy(scope.movie);
               YouTubeService.playVideoById(scope.movie.trailers[0].key);
-
-              //YouTubeService.getYouTubeIdByMovieItem(scope.movie).then(function(movieId){
-              //    if(movieId != 'No trailer found') {
-              //        ctrl.searchString = '';
-              //        MtTheaterService.theater.showTheater = true;
-              //        YouTubeService.playVideoById(movieId);
-              //    }
-              //});
-              //$rootScope.$broadcast('play-queue', movieKey);
           };
 
           scope.showNoTrailerMessage = function() {

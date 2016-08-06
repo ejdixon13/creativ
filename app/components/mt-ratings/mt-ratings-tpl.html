@@ -1,0 +1,17 @@
+<section class="mt-ratings">
+    <!--CRITICS RATING-->
+    <div class="icon-responsive"
+         ng-class="{'icon--tomato' : ratingData.critics_rating == 'Fresh',
+                         'icon--rotten-tomato' : ratingData.critics_rating == 'Rotten',
+                         'icon--certified-fresh' : ratingData.critics_rating == 'Certified Fresh'}"
+         ng-if="ratingData.critics_score != -1">
+    </div>
+    <div class="movie-search-item__rating-percent" ng-if="ratingData.critics_score != -1"> {{ratingData.critics_score}}%</div>
+
+    <!--AUDIENCE RATING-->
+    <div class="icon-responsive icon--popcorn"
+         ng-class="{'icon--popcorn' : ratingData.audience_rating == 'Upright',
+                         'icon--tipped-popcorn' : ratingData.audience_rating == 'Spilled'}"
+         ng-if="ratingData.audience_score != -1"></div>
+    <div class="movie-search-item__rating-percent" ng-if="ratingData.audience_score != -1">{{ratingData.audience_score}}%</div>
+</section>

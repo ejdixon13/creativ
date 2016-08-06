@@ -11,9 +11,12 @@
 
     //FACTORY METHOD
     function movieDataService(RottenTomatoesService, TmdbService, $q) {
+        var selectedMovie = {};
         return {
             getMoviesByQuery : getMoviesByQuery,
-            getUpcomingMovies: getUpcomingMovies
+            getUpcomingMovies: getUpcomingMovies,
+            playingMovie: null,
+            selectedMovie: null
         };
         /////////////////////////////////////////////////////////
         function getMoviesByQuery(searchString) {
@@ -96,6 +99,20 @@
             }
 
             return movie;
+        }
+
+        /**
+         * Get Selected Movie
+         */
+        function getSelectedMovie() {
+            return selectedMovie;
+        }
+
+        /**
+         * Set Selected Movie
+         */
+        function setSelectedMovie(movie) {
+            selectedMovie = movie;
         }
     }
 })();

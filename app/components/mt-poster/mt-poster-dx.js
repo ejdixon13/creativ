@@ -12,6 +12,7 @@
               height : '@pHeight',
               pSrc    : '@pSrc',
               hasTrailer: '=hasTrailer',
+              hidePlayButton: '@hidePlayButton',
               elevation: '=elevation'
           }
       };

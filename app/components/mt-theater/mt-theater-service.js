@@ -15,7 +15,8 @@
             theater : {
                 showTheater: false,
                 noTrailerAvailable: false,
-                searchOnTop: false
+                searchOnTop: false,
+                showMobileSearch: false
             }
         }
     }

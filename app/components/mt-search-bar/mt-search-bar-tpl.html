@@ -1,5 +1,5 @@
 
-<section class="mt-search-bar" ng-class="{'initial-search-bar': !theater.searchOnTop}" off-element-click="mtSearchBar.hideResults = true">
+<section class="mt-search-bar" ng-class="{'initial-search-bar': !theater.searchOnTop && !theater.showMobileSearch}" off-element-click="mtSearchBar.hideResults = true">
     <!--Search Input-->
     <h1 ng-if="!theater.searchOnTop" hide-xs>Search Movie Trailers</h1>
     <input id="mt-search-input"
@@ -13,13 +13,14 @@
            ng-change="theater.searchOnTop = true; mtSearchBar.search()">
 
     <input id="mt-mobile-search-input"
+           autofocus
            hide-gt-xs
            class="input__main--large "
            type="text"
            ng-model="mtSearchBar.searchString"
            ng-focus="mtSearchBar.hideResults = false"
            placeholder="Enter Title"
-           ng-show="theater.searchOnTop"
+           ng-show="theater.showMobileSearch"
            ng-change="mtSearchBar.search()">
 
 

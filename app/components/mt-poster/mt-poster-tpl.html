@@ -1,6 +1,8 @@
 <section class="mt-poster" >
-    <span ng-if="hasTrailer"><i class="fa fa-play-circle icon__clickable--white"></i></span>
-    <span ng-if="!hasTrailer" class="poster-action">No Trailer Available</span>
+    <span ng-if="!hidePlayButton">
+        <span ng-if="hasTrailer"><i class="fa fa-play-circle icon__clickable--white"></i></span>
+        <span ng-if="!hasTrailer" class="poster-action">No Trailer Available</span>
+    </span>
 
     <img width="{{width}}" height="{{height}}" class="{{'md-whiteframe-' + elevation +'dp'}}" ng-src="{{pSrc}}">
 </section>
