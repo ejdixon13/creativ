@@ -13,7 +13,9 @@
     function MtTheaterService() {
         return {
             theater : {
+                showOverlay: false,
                 showTheater: false,
+                showPlayer: false,
                 noTrailerAvailable: false,
                 searchOnTop: false,
                 showMobileSearch: false

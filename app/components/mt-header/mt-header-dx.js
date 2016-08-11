@@ -17,6 +17,7 @@
 
         function setFocusOnSearch() {
             $scope.theater.showMobileSearch = true;
+            $scope.theater.showOverlay = true;
         }
     }]);
 })();

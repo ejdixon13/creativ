@@ -1,3 +1,24 @@
+.title-playing-info {
+  position: relative;
+  overflow: hidden;
+  background-color: darken(rgba(0, 0, 0, 0.5), 5%);
+  .title-playing-info--backdrop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+  }
+}
+
+@media (min-width: $iphone-6-width) {
+  .title-playing-info{
+    font-size: 18px;
+  }
+}
+
 .title-playing-info--top {
   display: flex;
   position: relative;
@@ -6,40 +27,29 @@
 .title-playing-info--bottom {
   z-index: 1;
   position: relative;
+  max-width: 750px;
+}
+
+@media (min-width: $iphone-6-width) {
+  .title-playing-info--bottom {
+    margin-top: 1.5em;
+  }
 }
 .title-playing-info__top-right-details {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-left: 5px;
-  width: 60vw;
-}
-.title-playing-info--backdrop-container {
-  position: relative;
-  overflow: hidden;
-  .title-playing-info--backdrop {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    opacity: 0.5;
+  margin-left: 10px;
+  min-width: 50vw;
+  max-width: 52vw;
+  .flex-end-to-end {
+    width: 125%;
   }
 }
-.title-playing-info--backdro:after {
-  content: '';
-  background-image: url(http://image.tmdb.org/t/p/w185/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  opacity: .5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  right: 0;
-  position: absolute;
-  z-index: 0;
+@media (min-width: $iphone-6-width) {
+  .title-playing-info__top-right-details{
+    min-width: inherit;
+    max-width: inherit;
+    justify-content: initial;
+  }
 }

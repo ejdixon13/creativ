@@ -15,8 +15,8 @@
                 }
             };
         }])
-        .controller('MtFeaturedListCtrl', ['RottenTomatoesService', 'TmdbService', 'MtTheaterService', 'YouTubeService',
-            function(RottenTomatoesService, TmdbService, MtTheaterService, YouTubeService) {
+        .controller('MtFeaturedListCtrl', ['RottenTomatoesService', 'TmdbService', 'MtTheaterService', 'YouTubeService', 'MovieDataService',
+            function(RottenTomatoesService, TmdbService, MtTheaterService, YouTubeService, MovieDataService) {
                 var mtFeaturedList = this;
                 mtFeaturedList.playQueue = playQueue;
                 TmdbService.getMovieList(mtFeaturedList.listChoice)
@@ -34,10 +34,16 @@
                         });
                     });
 
-                function playQueue(trailers) {
-                    MtTheaterService.theater.showTheater = true;
-                    MtTheaterService.theater.searchOnTop = true;
-                    YouTubeService.playVideoById(trailers[0].key);
+                function playQueue(featuredMovie) {
+                    //TODO: Create movie object from tmbd object and rotten tomatoes query
+                    MovieDataService.createMovieObjectFromTmdb(featuredMovie)
+                        .then(function (movie) {
+                            MovieDataService.playingMovie = movie;
+                            MtTheaterService.theater.showTheater = true;
+                            MtTheaterService.theater.searchOnTop = true;
+                            YouTubeService.playVideoById(featuredMovie.trailers[0].key);
+                        });
+
                 }
 
 

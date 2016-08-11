@@ -7,10 +7,10 @@
     angular
         .module('mooVtrailers.apiServices')
         .factory('YouTubeService', YouTubeService);
-    YouTubeService.$inject = ['HttpHelper', '$window'];
+    YouTubeService.$inject = ['HttpHelper', '$window', 'MtTheaterService'];
 
     //FACTORY METHOD
-    function YouTubeService(HttpHelper, $window) {
+    function YouTubeService(HttpHelper, $window, MtTheaterService) {
         var player;
         init();
         return {
@@ -44,6 +44,7 @@
         }
 
         function playVideoById(id) {
+            MtTheaterService.theater.showPlayer = true;
             player.loadVideoById(id);
         }
 
@@ -56,7 +57,8 @@
             $window.onYouTubeIframeAPIReady = function() {
                 player = new YT.Player('player', {
                     height: '390',
-                    width: '640'
+                    width: '640',
+                    playerVars: {rel: 0}
                 });
             };
         }

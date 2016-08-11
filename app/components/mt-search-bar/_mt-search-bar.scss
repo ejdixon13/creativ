@@ -3,6 +3,8 @@
   position: relative;
   padding-right: 20px;
   width: 70vw;
+  top: 0;
+  transition: top .5s ease ;
 }
 
 .mt-search-results__container{
@@ -12,8 +14,28 @@
   max-width: 640px;
   z-index : 10;
 }
-#mt-mobile-search-input {
-  //width: 80%;
+
+.mt-search-result.ng-enter {
+  opacity: 0.2 ;
+  padding-top: 30px ;
+  transition: all ease 250ms ;
+}
+
+.mt-search-result.ng-enter-stagger {
+  transition-delay: 0.1s ;
+  -webkit-transition-delay: 0.1s ;
+  /*
+      FROM THE DOCUMENTATION:
+      In case the stagger doesn't work then these two values must be set
+      to 0 to avoid an accidental CSS inheritance.
+  */
+  transition-duration: 0s ;
+  -webkit-transition-duration: 0s ;
+}
+
+.mt-search-result.ng-enter-active {
+  opacity: 1.0 ;
+  padding-top: 0px ;
 }
 
 
@@ -27,10 +49,7 @@
     position: absolute;
     text-align: center;
     display: block;
-
-    //position: absolute;
-    //top: 50%;
-    //transform: translateY(-50%);
+    transition: top .5s ease ;
   }
   .initial-search-bar {
     @extend .search-absolute-center;

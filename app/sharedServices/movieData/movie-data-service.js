@@ -15,6 +15,7 @@
         return {
             getMoviesByQuery : getMoviesByQuery,
             getUpcomingMovies: getUpcomingMovies,
+            createMovieObjectFromTmdb : createMovieObjectFromTmdb,
             playingMovie: null,
             selectedMovie: null
         };
@@ -99,6 +100,38 @@
             }
 
             return movie;
+        }
+
+        /**
+         * Create Movie Object from TMDB object
+         */
+        function createMovieObjectFromTmdb(tmdbObject) {
+            var movieReleaseYear = tmdbObject.release_date.split('-')[0];
+            var movieObject = {
+                title: tmdbObject.original_title,
+                year: movieReleaseYear,
+                synopsis: tmdbObject.overview,
+                mpaa_rating: null,
+                hasTrailer: tmdbObject.hasTrailer,
+                highResPoster: tmdbObject.poster_path,
+                backdrop: tmdbObject.backdrop_path,
+                ratings: null
+            };
+
+            return RottenTomatoesService.getMoviesByQuery(movieObject.title)
+                .then(addRatingsToObject);
+
+            function addRatingsToObject(response) {
+                var titleCompare = movieObject.title.replace(/[^0-9a-z]/gi, '').toLowerCase();
+                angular.forEach(response.data.movies, function(movie) {
+                  if (movie.title.replace(/[^0-9a-z]/gi, '').toLowerCase() == titleCompare && movie.year == movieReleaseYear) {
+                      movieObject.ratings = movie.ratings;
+                      movieObject.mpaa_rating = movie.mpaa_rating;
+                  }
+                });
+                return movieObject;
+            }
+
         }
 
         /**

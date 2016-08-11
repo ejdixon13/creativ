@@ -1,32 +1,41 @@
 
-<section class="mt-search-bar" ng-class="{'initial-search-bar': !theater.searchOnTop && !theater.showMobileSearch}" off-element-click="mtSearchBar.hideResults = true">
+<section class="mt-search-bar" ng-class="{'initial-search-bar': !theater.searchOnTop && !theater.showMobileSearch}"
+         off-element-click="mtSearchBar.hideResults = true; theater.showOverlay = false;">
     <!--Search Input-->
     <h1 ng-if="!theater.searchOnTop" hide-xs>Search Movie Trailers</h1>
+
+    <!--DESKTOP-->
     <input id="mt-search-input"
            hide-xs
            autofocus
            class="input__main--large"
            type="text"
            ng-model="mtSearchBar.searchString"
-           ng-focus="mtSearchBar.hideResults = false"
+           ng-model-options="{debounce: 500}"
+           ng-focus="mtSearchBar.hideResults = false;"
+           ng-click="theater.showOverlay = true;"
            placeholder="Enter Title"
-           ng-change="theater.searchOnTop = true; mtSearchBar.search()">
+           ng-change="theater.searchOnTop = true; theater.showOverlay = true; mtSearchBar.search()">
 
+
+    <!--MOBILE-->
     <input id="mt-mobile-search-input"
            autofocus
            hide-gt-xs
            class="input__main--large "
+           ng-model-options="{debounce: 500}"
            type="text"
            ng-model="mtSearchBar.searchString"
-           ng-focus="mtSearchBar.hideResults = false"
+           ng-focus="mtSearchBar.hideResults = false;"
+           ng-click="theater.showOverlay = true;"
            placeholder="Enter Title"
            ng-show="theater.showMobileSearch"
-           ng-change="mtSearchBar.search()">
+           ng-change="mtSearchBar.search(); ">
 
 
     <!--Movie Trailer Search Results-->
     <section class="mt-search-results__container" ng-hide="mtSearchBar.hideResults" ng-if="mtSearchBar.searchString != ''">
-        <div class="mt-container__spacer" ng-repeat="movie in mtSearchBar.movies">
+        <div class="mt-container__spacer mt-search-result" ng-repeat="movie in mtSearchBar.movies">
             <movie-search-item movie="movie" ></movie-search-item>
         </div>
     </section>

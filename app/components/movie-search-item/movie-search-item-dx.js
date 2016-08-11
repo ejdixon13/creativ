@@ -19,6 +19,7 @@
           scope.playQueue = function playQueue() {
               ctrl.searchString = '';
               MtTheaterService.theater.showTheater = true;
+              MtTheaterService.theater.showOverlay = false;
               MovieDataService.playingMovie = angular.copy(scope.movie);
               YouTubeService.playVideoById(scope.movie.trailers[0].key);
           };

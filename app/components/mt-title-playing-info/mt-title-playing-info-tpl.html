@@ -1,13 +1,25 @@
-<section class="mt-container title-playing-info--backdrop-container"
-         ng-if="vm.movieService.playingMovie">
+<section class="mt-container--small title-playing-info title-playing-info--backdrop-container"
+         ng-show="vm.movieService.playingMovie">
     <!--BACKGROUND IMAGE-->
     <img class="title-playing-info--backdrop" ng-src="{{'http://image.tmdb.org/t/p/w185' + vm.movieService.playingMovie.backdrop}}">
     <section class="title-playing-info--top">
+        <!--MOBILE VERSION-->
         <mt-poster ng-click="playQueue()"
+                   hide-gt-xs
                    has-trailer="vm.movieService.playingMovie.hasTrailer"
                    p-src="{{(vm.movieService.playingMovie.highResPoster) ? 'http://image.tmdb.org/t/p/w185/' + vm.movieService.playingMovie.highResPoster : vm.movieService.playingMovie.posters.original}}"
                    p-width="50px"
                    p-height="75px"
+                   hide-play-button="true"
+                   elevation="4"></mt-poster>
+
+        <!--DESKTOP VERSION-->
+        <mt-poster ng-click="playQueue()"
+                   hide-xs
+                   has-trailer="vm.movieService.playingMovie.hasTrailer"
+                   p-src="{{(vm.movieService.playingMovie.highResPoster) ? 'http://image.tmdb.org/t/p/w185/' + vm.movieService.playingMovie.highResPoster : vm.movieService.playingMovie.posters.original}}"
+                   p-width="150px"
+                   p-height="225px"
                    hide-play-button="true"
                    elevation="4"></mt-poster>
 
@@ -16,10 +28,10 @@
             <!--MOVIE SEARCH ITEM DETAILS-->
             <div class="flex-end-to-end">
                 <div class="heading-4">{{vm.movieService.playingMovie.title}} ({{vm.movieService.playingMovie.year}}) </div>
-                <div class="mpaa-rating">{{vm.movieService.playingMovie.mpaa_rating}}</div>
+                <div class="mpaa-rating" ng-show="vm.movieService.playingMovie.mpaa_rating">{{vm.movieService.playingMovie.mpaa_rating}}</div>
             </div>
 
-            <mt-ratings rating-data="vm.movieService.playingMovie.ratings"></mt-ratings>
+            <mt-ratings rating-data="vm.movieService.playingMovie.ratings" ng-show="vm.movieService.playingMovie.ratings"></mt-ratings>
         </section>
     </section>
 

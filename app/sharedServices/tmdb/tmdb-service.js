@@ -13,6 +13,7 @@
     function TmdbService(HttpHelper, $q, $timeout) {
         return {
             getMoviesByQuery: getMoviesByQuery,
+            getMovieById: getMovieById,
             getMovieByIMDBId: getMovieByIMDBId,
             getMovieTrailerById: getMovieTrailerById,
             getUpcomingMovies: getUpcomingMovies,
@@ -21,6 +22,10 @@
         /////////////////////////////////////////////////////////
         function getMoviesByQuery(query) {
             return HttpHelper.get('http://api.themoviedb.org/3/search/movie?api_key=98a62afbdaaba0e0968f74212a9f7561&include_adult=false&query=' + query);
+        }
+
+        function getMovieById(id) {
+
         }
 
         function getMovieByIMDBId(imdbId) {

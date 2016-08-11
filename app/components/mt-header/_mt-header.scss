@@ -23,4 +23,11 @@
   transform: translateY(-50%);
   right: 20px;
   font-size: 1.8em;
+  .fa-search:after {
+    content: ' ';
+    position: absolute;
+    padding: 25px;
+    left: -10px;
+    top: -10px;
+  }
 }

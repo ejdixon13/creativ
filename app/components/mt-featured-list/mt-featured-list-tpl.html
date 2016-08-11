@@ -4,7 +4,7 @@
         <!--TODO: add arrows to swipe titles on desktop-->
         <mt-poster ng-repeat="featuredMovie in mtFeaturedList.featuredMovieList"
                    ng-if="featuredMovie.hasTrailer"
-                   ng-click="mtFeaturedList.playQueue(featuredMovie.trailers)"
+                   ng-click="mtFeaturedList.playQueue(featuredMovie)"
                    has-trailer="featuredMovie.hasTrailer"
                    p-src="{{'http://image.tmdb.org/t/p/w185/' + featuredMovie.poster_path}}"
                    class="mt-poster-container"
