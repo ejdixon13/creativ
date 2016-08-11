@@ -5,7 +5,10 @@
   height: 1.2em;
   line-height: 1.1em;
   background-color: $transparent-white--background;
-  //min-width: 25px;
+}
+.mpaa-rating__container {
+  position: absolute;
+  right: 0;
 }
 
 .mt-ratings {

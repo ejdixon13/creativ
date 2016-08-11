@@ -28,7 +28,10 @@
             <!--MOVIE SEARCH ITEM DETAILS-->
             <div class="flex-end-to-end">
                 <div class="heading-4">{{vm.movieService.playingMovie.title}} ({{vm.movieService.playingMovie.year}}) </div>
-                <div class="mpaa-rating" ng-show="vm.movieService.playingMovie.mpaa_rating">{{vm.movieService.playingMovie.mpaa_rating}}</div>
+
+                <div class="mpaa-rating__container">
+                    <div class="mpaa-rating" ng-show="vm.movieService.playingMovie.mpaa_rating">{{vm.movieService.playingMovie.mpaa_rating}}</div>
+                </div>
             </div>
 
             <mt-ratings rating-data="vm.movieService.playingMovie.ratings" ng-show="vm.movieService.playingMovie.ratings"></mt-ratings>
