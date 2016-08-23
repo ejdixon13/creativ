@@ -53,27 +53,36 @@
         }
 
         function getTMDBMovieInfo(movie) {
-            if (movie.alternate_ids) { // then IMDB id exists
-                TmdbService.getMovieByIMDBId(movie.alternate_ids.imdb).then(function (response) {
-                    if (response.data.movie_results.length > 0) {
-                        getTMDBMovieParts(response.data.movie_results[0]);
-                    } else {
-                        if (movie.year >= 2016) { //sometimes the imdb info hasn't been associated yet
-                            TmdbService.getMoviesByQuery(movie.title).then(function (response) {
-                                var tmdbResult = (response.data.results) ? response.data.results[0] : null;
-                                if (movie.year == parseInt(tmdbResult.release_date.substr(0, tmdbResult.release_date.indexOf('-'))) &&
-                                    tmdbResult.title == movie.title) {
-                                    getTMDBMovieParts(tmdbResult);
-                                }
 
-                            })
-                        }
-                    }
-                })
-            }
-            else {
-                movie.hasTrailer = false;
-            }
+            TmdbService.getMoviesByQueryAndYear(movie.title, movie.year).then(function (response) {
+                var tmdbResult = (response.data.results) ? response.data.results[0] : null;
+                if (tmdbResult.title == movie.title) {
+                    getTMDBMovieParts(tmdbResult);
+                }
+
+            });
+
+            //if (movie.alternate_ids) { // then IMDB id exists
+            //    TmdbService.getMovieByIMDBId(movie.alternate_ids.imdb).then(function (response) {
+            //        if (response.data.movie_results.length > 0) {
+            //            getTMDBMovieParts(response.data.movie_results[0]);
+            //        } else {
+            //            if (movie.year >= 2016) { //sometimes the imdb info hasn't been associated yet
+            //                TmdbService.getMoviesByQuery(movie.title).then(function (response) {
+            //                    var tmdbResult = (response.data.results) ? response.data.results[0] : null;
+            //                    if (movie.year == parseInt(tmdbResult.release_date.substr(0, tmdbResult.release_date.indexOf('-'))) &&
+            //                        tmdbResult.title == movie.title) {
+            //                        getTMDBMovieParts(tmdbResult);
+            //                    }
+            //
+            //                })
+            //            }
+            //        }
+            //    });
+            //}
+            //else {
+            //    movie.hasTrailer = false;
+            //}
 
             function getTMDBMovieParts(tmdbResult) {
                 getTMDBMoviePosters(tmdbResult);

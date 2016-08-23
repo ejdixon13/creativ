@@ -13,6 +13,7 @@
     function TmdbService(HttpHelper, $q, $timeout) {
         return {
             getMoviesByQuery: getMoviesByQuery,
+            getMoviesByQueryAndYear: getMoviesByQueryAndYear,
             getMovieById: getMovieById,
             getMovieByIMDBId: getMovieByIMDBId,
             getMovieTrailerById: getMovieTrailerById,
@@ -22,6 +23,10 @@
         /////////////////////////////////////////////////////////
         function getMoviesByQuery(query) {
             return HttpHelper.get('http://api.themoviedb.org/3/search/movie?api_key=98a62afbdaaba0e0968f74212a9f7561&include_adult=false&query=' + query);
+        }
+
+        function getMoviesByQueryAndYear(query, year) {
+            return HttpHelper.get('http://api.themoviedb.org/3/search/movie?api_key=98a62afbdaaba0e0968f74212a9f7561&include_adult=false&year='+ year + '&query=' + query);
         }
 
         function getMovieById(id) {
