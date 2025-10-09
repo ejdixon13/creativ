@@ -7,11 +7,14 @@
     angular
         .module('mooVtrailers.core')
         .factory('MovieDataService', movieDataService);
-    movieDataService.$inject = ['RottenTomatoesService', 'TmdbService', '$q'];
+    // GOOD PRACTICE: Added StringUtilsService for better code organization
+    movieDataService.$inject = ['RottenTomatoesService', 'TmdbService', '$q', 'StringUtilsService'];
 
     //FACTORY METHOD
-    function movieDataService(RottenTomatoesService, TmdbService, $q) {
+    function movieDataService(RottenTomatoesService, TmdbService, $q, StringUtilsService) {
         var selectedMovie = {};
+        // BAD PRACTICE: Magic number without explanation
+        var MAX_SYNOPSIS_LENGTH = 250;
         return {
             getMoviesByQuery : getMoviesByQuery,
             getUpcomingMovies: getUpcomingMovies,
@@ -131,11 +134,19 @@
                 .then(addRatingsToObject);
 
             function addRatingsToObject(response) {
-                var titleCompare = movieObject.title.replace(/[^0-9a-z]/gi, '').toLowerCase();
+                // GOOD PRACTICE: Using utility service for string operations
+                var titleCompare = StringUtilsService.sanitizeTitle(movieObject.title);
+
                 angular.forEach(response.data.movies, function(movie) {
-                  if (movie.title.replace(/[^0-9a-z]/gi, '').toLowerCase() == titleCompare && movie.year == movieReleaseYear) {
+                  // GOOD PRACTICE: Using utility method instead of inline regex
+                  var movieTitleSanitized = StringUtilsService.sanitizeTitle(movie.title);
+
+                  // BAD PRACTICE: Using == instead of === for comparison
+                  if (movieTitleSanitized == titleCompare && movie.year == movieReleaseYear) {
                       movieObject.ratings = movie.ratings;
                       movieObject.mpaa_rating = movie.mpaa_rating;
+                      // BAD PRACTICE: Truncating synopsis without checking if it exists
+                      movieObject.synopsis = StringUtilsService.truncateText(movieObject.synopsis, MAX_SYNOPSIS_LENGTH);
                   }
                 });
                 return movieObject;
